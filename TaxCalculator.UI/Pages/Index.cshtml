@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Tax Calculator";
+}
+
+<div class="text-center">
+	<h1 
+		class="display-4" 
+		style="font: Arial, Helvetica, sans-serif; margin-bottom: 5%">
+		Calculate Income Tax Per Annum
+	</h1>
+
+	<div class="tax-calculator-form">
+
+        <h1> Contact Us </h1>
+        <form method="post">
+			<input 
+				type="text" 
+				id="postalCode"
+				   name="postalCode"
+				   placeholder="Postal Code"
+             />
+
+			<input 
+				type="number" 
+				id="annaulIncome"
+				name="annaulIncome"
+				placeholder="Annual Income"
+				/>
+
+            <input 
+				type="submit"
+				value="Calculate!" 
+			/>
+        </form>
+    </div>
+	@if (!string.IsNullOrEmpty(Model.TaxCharged))
+	{
+		<div class="text-center">
+			<h1 style="font: Arial, Helvetica, sans-serif;">Income Tax: <b>@Html.DisplayFor(modelItem => Model.TaxCharged)</b></h1>
+			<div>
+				<p style="font: Arial, Helvetica, sans-serif;"> Postal Code: <b>@Model.PostalCode</b>  and  Annual Income: <b>@Model.AnnualIncome</b></p>
+			</div>
+		</div>
+	}
+	@if (!string.IsNullOrEmpty(Model.Message))
+	{
+		<div class="text-center">
+			<div>
+				<p style="font: Arial, Helvetica, sans-serif; color: red"> @Model.Message</p>
+			</div>
+		</div>
+	}
+</div>
+

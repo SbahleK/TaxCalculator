@@ -1,0 +1,119 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.tax-calculator-form {
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width:550px;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+
+    .tax-calculator-form h1 {
+        background: #43D1AF;
+        padding: 20px 0;
+        font-size: 140%;
+        font-weight: 300;
+        text-align: center;
+        color: #fff;
+        margin: -16px -16px 16px -16px;
+    }
+
+    .tax-calculator-form input[type="text"],
+    .tax-calculator-form input[type="number"]
+    {
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        background: #fff;
+        margin-bottom: 4%;
+        border: 1px solid #ccc;
+        padding: 3%;
+        color: #555;
+        font: 95% Arial, Helvetica, sans-serif;
+    }
+
+    .tax-calculator-form input[type="submit"],
+    .tax-calculator-form input[type="button"] {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        padding: 3%;
+        background: #43D1AF;
+        border-bottom: 2px solid #30C29E;
+        border-top-style: none;
+        border-right-style: none;
+        border-left-style: none;
+        color: #fff;
+    }
+
+        .tax-calculator-form input[type="submit"]:hover,
+        .tax-calculator-form input[type="button"]:hover {
+            background: #2EBC99;
+        }
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tbl-header {
+    background-color: #43D1AF;
+}
+
+.tbl-content {
+    height: 300px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: #000000;
+    border-bottom: solid 1px #F7F7F7;
+}
+
+
+section {
+    margin: 50px;
+}
