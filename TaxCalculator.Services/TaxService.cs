@@ -3,7 +3,7 @@ using TaxCalculator.Services.Models;
 
 namespace TaxCalculator.Services
 {
-    public class TaxService(ITaxRepository taxRepository, TaxCalculatorFactory calculatorFactory) : ITaxService
+    public class TaxService(ITaxRepository taxRepository, ITaxCalculatorFactory calculatorFactory) : ITaxService
 	{
 		public async Task<TaxCalculatorResponse> CalculateTaxAsync(decimal income, string postalCode)
 		{
@@ -14,7 +14,7 @@ namespace TaxCalculator.Services
 
 			var taxCalculationType = await taxRepository.GetTaxCalculationTypeByPostalCodeAsync(postalCode);	
 
-			var taxCalculator = calculatorFactory.GetCalculator(taxCalculationType.Type);
+			var taxCalculator = calculatorFactory.GetTaxCalculator(taxCalculationType.Type);
 			var result = await taxCalculator.CalculateTaxAsync(income, taxCalculationType.Id);
 
 			return new TaxCalculatorResponse { AnnualIncome = income, PostalCode = postalCode, TaxCharged = result.TaxCharged, CalculatedOn = result.CreatedOn };
@@ -23,20 +23,14 @@ namespace TaxCalculator.Services
         public async Task<IList<TaxCalculatorResponse>> GetCalcilatedTaxesAsync()
         {
 				var taxes = await taxRepository.GetCalculatedTaxesAsync();
-				var taxList = new List<TaxCalculatorResponse>();
 
-				foreach (var tax in taxes)
+				return taxes.Select(tax => new TaxCalculatorResponse
 				{
-					taxList.Add(new TaxCalculatorResponse
-					{
-						AnnualIncome = tax.Income,
-						TaxCharged = tax.TaxCharged,
-						CalculatedOn = tax.CreatedOn,
-						PostalCode = tax.TaxCalculationType.PostalCode
-					});
-				}
-
-				return taxList;
-        }
+					AnnualIncome = tax.Income,
+					TaxCharged = tax.TaxCharged,
+					CalculatedOn = tax.CreatedOn,
+					PostalCode = tax.TaxCalculationType.PostalCode
+				}).ToList();
+		}
     }
 }

@@ -3,10 +3,10 @@ using TaxCalculator.Services.TaxCalculators;
 
 namespace TaxCalculator.Services
 {
-    public class TaxCalculatorFactory
+    public class TaxCalculatorFactory : ITaxCalculatorFactory
     {
-		private readonly ITaxRepository _taxRepository;
-		private readonly Dictionary<string, Func<ITaxCalculator>> _calculatorFactories;
+        private readonly ITaxRepository _taxRepository;
+        private readonly Dictionary<string, Func<ITaxCalculator>> _calculatorFactories;
 
         public TaxCalculatorFactory(ITaxRepository taxRepository)
         {
@@ -20,14 +20,14 @@ namespace TaxCalculator.Services
             };
         }
 
-        public ITaxCalculator GetCalculator(string type)
+        public ITaxCalculator GetTaxCalculator(string type)
         {
             if (_calculatorFactories.TryGetValue(type, out var factory))
             {
                 return factory();
             }
 
-            throw new ArgumentNullException(type,"Unsupported tax calculation type!");
+            throw new ArgumentNullException(type, "Unsupported tax calculation type!");
         }
     }
 }
