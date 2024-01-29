@@ -21,7 +21,7 @@ namespace TaxCalculator.Tests.ServicesTests
 			// assert
 
 			result.SingleOrDefault(x => x.ServiceType == typeof(ITaxService))!.ImplementationType.ShouldBe(typeof(TaxService));
-			result.SingleOrDefault(x => x.ServiceType == typeof(TaxCalculatorFactory))!.ImplementationType.ShouldBe(typeof(TaxCalculatorFactory));
+			result.SingleOrDefault(x => x.ServiceType == typeof(ITaxCalculatorFactory))!.ImplementationType.ShouldBe(typeof(TaxCalculatorFactory));
 			result.SingleOrDefault(x => x.ImplementationType == typeof(ProgressiveTaxCalculator))!.ServiceType.ShouldBe(typeof(ITaxCalculator));
 			result.SingleOrDefault(x => x.ImplementationType == typeof(FlatValueTaxCalculator))!.ServiceType.ShouldBe(typeof(ITaxCalculator));
 			result.SingleOrDefault(x => x.ImplementationType == typeof(FlatRateTaxCalculator))!.ServiceType.ShouldBe(typeof(ITaxCalculator));
