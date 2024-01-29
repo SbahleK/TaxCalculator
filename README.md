@@ -10,8 +10,6 @@ Tests can be executed using test explore in visual studio.
 
 The App uses a SQLLite db that is created when your initially start the application
 
-The solution can also be exucuted in a docker container.
-
 ### How to execute the solution?
 You can execute the solution from a VS IDE (select multiple startup projects(TaxCalculator.API and TaxCalculator.UI))
 
