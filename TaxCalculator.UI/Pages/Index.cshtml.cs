@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 using System.Text.Json;
 using TaxCalculator.UI.Models;
 
@@ -26,20 +27,18 @@ namespace TaxCalculator.UI.Pages
 			string apiUrl = $"{configuration["ApiUrl"]}/calculate-tax?postalCode={PostalCode}&annualIncome={Convert.ToDecimal(AnnualIncome)}";
 
 			HttpResponseMessage response = await client.GetAsync(apiUrl);
+			string content = await response.Content.ReadAsStringAsync();
+			JsonSerializerOptions options = new() { PropertyNameCaseInsensitive = true };
 
 			if (response.IsSuccessStatusCode)
-			{
-				string content = await response.Content.ReadAsStringAsync();
-				JsonSerializerOptions options = new()
-				{
-					PropertyNameCaseInsensitive = true
-				};
+			{			
 				var result = JsonSerializer.Deserialize<TaxCalculatorResponse>(content, options);
 				TaxCharged = result!.TaxCharged.ToString();
 			}
 			else
 			{
-				Message = await response.Content.ReadAsStringAsync();
+				var result = JsonSerializer.Deserialize<ResponseModel>(content, options);
+				Message = result.Message;
             }
         }
     }

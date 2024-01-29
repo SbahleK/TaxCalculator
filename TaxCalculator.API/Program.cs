@@ -1,3 +1,4 @@
+using TaxCalculator.API;
 using TaxCalculator.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
+app.UseExceptionHandleMiddleware();
 
 app.MapGet("api/calculate-tax", async (ITaxService service, string postalCode, decimal annualIncome) =>
  await service.CalculateTaxAsync(annualIncome, postalCode)

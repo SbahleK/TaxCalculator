@@ -69,7 +69,7 @@ namespace TaxCalculator.Tests.DataLayerTests
 			var postalCode = "Test";
 
 			// act
-			Assert.ThrowsAsync<ArgumentNullException>(() =>  _repo.GetTaxCalculationTypeByPostalCodeAsync(postalCode));
+			Assert.ThrowsAsync<ArgumentException>(() =>  _repo.GetTaxCalculationTypeByPostalCodeAsync(postalCode));
 		}
 
 		[Test]

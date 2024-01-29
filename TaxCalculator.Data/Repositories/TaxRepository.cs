@@ -13,7 +13,7 @@ namespace TaxCalculator.Data.Repositories
 		public async Task<TaxCalculationType> GetTaxCalculationTypeByPostalCodeAsync(string postalCode)
 		{
 			var taxCalculationType = await dbContext.TaxCalculationTypes.FirstOrDefaultAsync(x => x.PostalCode == postalCode);
-			return taxCalculationType ?? throw new ArgumentNullException(postalCode, "Postal code not found!");
+			return taxCalculationType ?? throw new ArgumentException($"Postal code {postalCode} does not exist!");
 		}
 		public async Task<CalculatedTax> AddCalculatedTaxAsync(decimal income, decimal tax, long taxCalculationTypeId)
 		{
