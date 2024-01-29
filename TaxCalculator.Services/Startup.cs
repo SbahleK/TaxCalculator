@@ -13,7 +13,7 @@ namespace TaxCalculator.Services
 
 			services.AddDataLayer();
 			services.AddTransient<ITaxService, TaxService>();
-			services.AddTransient<TaxCalculatorFactory>();
+			services.AddTransient<ITaxCalculatorFactory, TaxCalculatorFactory>();
 			services.AddTransient<ITaxCalculator, ProgressiveTaxCalculator>();
 			services.AddTransient<ITaxCalculator, FlatValueTaxCalculator>();
 			services.AddTransient<ITaxCalculator, FlatRateTaxCalculator>();

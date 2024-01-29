@@ -5,7 +5,7 @@ using TaxCalculator.UI.Models;
 
 namespace TaxCalculator.UI.Pages
 {
-	public class IndexModel : PageModel
+	public class IndexModel(IConfiguration configuration) : PageModel
 	{
         public required string TaxCharged { get; set; }
 		[BindProperty]
@@ -23,7 +23,7 @@ namespace TaxCalculator.UI.Pages
 			AnnualIncome = Request.Form["annaulIncome"]!;
 
 			
-			string apiUrl = $"https://localhost:7109/api/calculate-tax?postalCode={PostalCode}&annualIncome={Convert.ToDecimal(AnnualIncome)}";
+			string apiUrl = $"{configuration["ApiUrl"]}/calculate-tax?postalCode={PostalCode}&annualIncome={Convert.ToDecimal(AnnualIncome)}";
 
 			HttpResponseMessage response = await client.GetAsync(apiUrl);
 

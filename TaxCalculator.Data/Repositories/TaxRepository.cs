@@ -34,6 +34,7 @@ namespace TaxCalculator.Data.Repositories
         {
 			return await dbContext.CalculatedTaxes
 				.Include(x => x.TaxCalculationType)
+				.OrderByDescending(x => x.Id)
 				.ToListAsync();
         }
     }

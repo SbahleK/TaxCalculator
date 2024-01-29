@@ -5,7 +5,7 @@ using TaxCalculator.UI.Models;
 
 namespace TaxCalculator.UI.Pages
 {
-	public class CalculatedTaxesModel : PageModel
+	public class CalculatedTaxesModel(IConfiguration configuration) : PageModel
 	{
         public required List<TaxCalculatorResponse> Taxes { get; set; }
 
@@ -13,7 +13,7 @@ namespace TaxCalculator.UI.Pages
         {
             Taxes = [];
 			using HttpClient client = new();
-			string apiUrl = "https://localhost:7109/api/taxes";
+			string apiUrl = $"{configuration["ApiUrl"]}/taxes";
 
 			HttpResponseMessage response = await client.GetAsync(apiUrl);
 
