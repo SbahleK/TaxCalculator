@@ -24,7 +24,11 @@ The following endpoint takes in a (postal code & annual income) and return the c
 ![image](https://github.com/SbahleK/TaxCalculator.API/assets/26767857/9a524c4c-918d-4fc1-a244-9a528e2b1ada)
 
 
-The following endpoint returns the list of caltculated taxes
+## UI
+Tax Calculator (Allows the user to input (postal code and income) and displays the results to the user)
+![image](https://github.com/SbahleK/TaxCalculator.API/assets/26767857/3f09f215-e6d2-409f-8250-040e344d2ccd)
+
+Calculated Taxes(Displays a history of all previously calculated taxes)
 ![image](https://github.com/SbahleK/TaxCalculator.API/assets/26767857/dc483208-760a-40a9-9528-1c9aebd5c5f7)
 
 
